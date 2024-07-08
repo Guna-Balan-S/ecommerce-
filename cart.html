@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="cart">
+            <h1>Cart</h1>
+            <ul>
+                {% for order in orders %}
+                <li>
+                    <img src="{{ order.product.image.url }}" alt="{{ order.product.name }}">
+                    <h2>{{ order.product.name }}</h2>
+                    <p>Quantity: {{ order.quantity }}</p>
+                    <p>Price: {{ order.total }}</p>
+                    <button>Remove</button>
+                </li>
+                {% endfor %}
+            </ul>
+            <p>Total:
